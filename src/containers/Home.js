@@ -1,9 +1,16 @@
-import React from 'react';
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../config/firebase";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const [user, loading, error] = useAuthState(auth);
 
-export default Home
+  return (
+    <div>
+      <p>Home</p>
+      <p>Current User: {user?.email}</p>
+    </div>
+  );
+};
+
+export default Home;
